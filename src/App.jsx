@@ -1,12 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
 import Header from "./components/Header"
+import AddExpense from "./pages/AddExpense"
 
 function App() {
+
+  const [expenses, setExpenses] = useState([]);
+
+  const handleAddExpense = (expense) => {
+    setExpenses((prevExpenses) => [...prevExpenses, expense]);
+    console.log("Yeni Gider:", expense)
+  };
 
   return (
     <div className="min-h-screen bg-gray-100">
       <Header />
-      <h1 className="text-center mt-10 text-2xl font-bold">Welcome to Xpensa!</h1>
+      <AddExpense onAddExpense={handleAddExpense} />
     </div>
   )
 }
